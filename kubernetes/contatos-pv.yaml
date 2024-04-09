@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: vol-host-pv
+  namespace: default
+spec:
+  storageClassName: contatvolumeclass
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: /run/desktop/mnt/host/c/Users/gladsonc/Tecnologia/pos-graduacao/k8s-volumes
+    type: DirectoryOrCreate

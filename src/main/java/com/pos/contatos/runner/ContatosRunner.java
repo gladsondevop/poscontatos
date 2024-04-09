@@ -35,6 +35,12 @@ public class ContatosRunner implements ApplicationRunner {
 		c2.setCelular("61988997755");
 		service.getContatos().add(c2);
 		
+		Contato c3 = new Contato();
+		c3.setId(service.getContatos().size()+1);
+		c3.setNome("Tiago de Tal da Silva");
+		c3.setCelular("61900000000");
+		service.getContatos().add(c3);
+		
 		LOGGER.info("Lista de contatos carregada!");
 	}
 

@@ -2,6 +2,8 @@ package com.pos.contatos.model;
 
 public class Contato {
 	
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nome;
 	private String celular;

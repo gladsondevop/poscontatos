@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contatos-deploy
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: lbl-contatos-pod
+  template:
+    metadata:
+      name: contatos-pod
+      labels:
+        app: lbl-contatos-pod
+    spec:
+      volumes:
+        - name: vol-contatos
+          persistentVolumeClaim:
+            claimName: vol-host-pvc
+      containers:
+        - name: contatos
+          image: gladsondevop/contatos:1.0
+          volumeMounts:
+            - name: vol-contatos
+              mountPath: /tmp
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              host: 10.111.191.40
+              path: /contatos
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              scheme: HTTP
+              host: 10.111.191.40
+              path: /contatos
+              port: 8080
+            periodSeconds: 5
+            failureThreshold: 3
+          ports:
+            - containerPort: 8080
