@@ -1,25 +1,26 @@
 package com.pos.contatos.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.context.annotation.Scope;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pos.contatos.model.Contato;
+import com.pos.contatos.repository.ContatoRepository;
 
 @Service
-@Scope
+//@Scope
 public class ContatoService {
 	
-	private List<Contato> contatos = new ArrayList<>();
-	
-	public List<Contato> getContatos() {
-		return contatos;
-	}
+	@Autowired
+	private ContatoRepository repository;
 
 	public List<Contato> listarContatos(){
-		return contatos;
+		return repository.findAll();
+	}
+	
+	public void addContato(Contato contato) {
+		repository.save(contato);
 	}
 
 }

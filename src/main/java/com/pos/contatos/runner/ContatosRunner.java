@@ -23,25 +23,28 @@ public class ContatosRunner implements ApplicationRunner {
 		
 		LOGGER.info("Carregando lista de contatos inicial...");
 		
-		Contato c1 = new Contato();
-		c1.setId(service.getContatos().size()+1);
-		c1.setNome("Gladson Cunha de Albuquerque");
-		c1.setCelular("61982124468");
-		service.getContatos().add(c1);
+		if(service.listarContatos().isEmpty()) {
+			Contato c1 = new Contato();
+			c1.setNome("Gladson Cunha de Albuquerque");
+			c1.setCelular("61982124468");
+			service.addContato(c1);
+			
+			Contato c2 = new Contato();
+			c2.setNome("Fulano de Tal da Silva");
+			c2.setCelular("61988997755");
+			service.addContato(c2);
+			
+			Contato c3 = new Contato();
+			c3.setNome("Tiago de Tal da Silva");
+			c3.setCelular("61900000000");
+			service.addContato(c3);
+			
+			LOGGER.info("Lista de contatos carregada!");
+		} else {
+			LOGGER.info("O banco já recebeu a carga inicial!");
+		}
 		
-		Contato c2 = new Contato();
-		c2.setId(service.getContatos().size()+1);
-		c2.setNome("Fulano de Tal da Silva");
-		c2.setCelular("61988997755");
-		service.getContatos().add(c2);
 		
-		Contato c3 = new Contato();
-		c3.setId(service.getContatos().size()+1);
-		c3.setNome("Tiago de Tal da Silva");
-		c3.setCelular("61900000000");
-		service.getContatos().add(c3);
-		
-		LOGGER.info("Lista de contatos carregada!");
 	}
 
 }

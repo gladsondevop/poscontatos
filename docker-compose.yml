@@ -1,22 +1,31 @@
 version: 2.24.6
 networks:
-    rede-pos:
-        driver: bridge
+  rede-pos:
+    driver: bridge
 services:
-    app:
-        image: gladsondevop/contatos:1.0
-        container_name: contatos
-        networks:
-            - rede-pos
-        ports:
-            - 8081:8080
-    
-    banco:
-        image: mysql
-        container_name: banco
-        environment:
-            MYSQL_ROOT_PASSWORD: 123456
-        networks:
-            - rede-pos
-        ports:
-            - 3306:3306
+  app:
+    image: gladsondevop/contatos:2.0
+    container_name: contatos-app
+    environment:
+      DATASOURCE_URL: "jdbc:mysql://banco:3306/db_contatos?useTimezone=true&serverTimezone=America/Sao_Paulo"
+    networks:
+      - rede-pos
+    ports:
+      - 8081:8080
+    depends_on: 
+      - banco
+  
+  banco:
+    image: mysql
+    container_name: contatos-banco
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+      MYSQL_DATABASE: db_contatos
+      MYSQL_USER: contatos
+      MYSQL_PASSWORD: "123456"
+    networks:
+      - rede-pos
+    ports:
+      - 3306:3306
+      
+      

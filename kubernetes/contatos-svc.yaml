@@ -4,6 +4,7 @@ metadata:
   name: contatos-svc
   labels:
     app: lbl-contatos-pod
+    so: lbl-ubuntu-pod
 spec:
   type: NodePort
   selector:
