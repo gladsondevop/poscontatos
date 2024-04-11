@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-configmap
+data:
+  DATASOURCE_URL: "jdbc:mysql://10.100.36.239:3310/db_contatos?useTimezone=true&serverTimezone=America/Sao_Paulo"
+  DATASOURCE_USERNAME: contatos
+  DATASOURCE_PASSWORD: "123456"
