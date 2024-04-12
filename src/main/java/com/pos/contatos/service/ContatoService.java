@@ -19,8 +19,12 @@ public class ContatoService {
 		return repository.findAll();
 	}
 	
-	public void addContato(Contato contato) {
-		repository.save(contato);
+	public Contato saveContato(Contato contato) {
+		return repository.save(contato);
+	}
+	
+	public void deleleContato(Contato contato) {
+		repository.delete(contato);
 	}
 
 }

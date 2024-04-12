@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: grafana-pod
+  labels:
+    prom: lbl-grafana-pod
+spec:
+  containers:
+    - name: grafana
+      image: grafana/grafana-enterprise
+      ports:
+        - containerPort: 3000

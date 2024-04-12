@@ -14,4 +14,4 @@ data:
       - job_name: 'contatos'
         metrics_path: "/actuator/prometheus"
         static_configs:
-          - targets: ['10.102.10.143:8080']
+          - targets: ['10.107.242.13:8080']

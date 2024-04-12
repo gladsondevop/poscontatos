@@ -27,17 +27,17 @@ public class ContatosRunner implements ApplicationRunner {
 			Contato c1 = new Contato();
 			c1.setNome("Gladson Cunha de Albuquerque");
 			c1.setCelular("61982124468");
-			service.addContato(c1);
+			service.saveContato(c1);
 			
 			Contato c2 = new Contato();
 			c2.setNome("Fulano de Tal da Silva");
 			c2.setCelular("61988997755");
-			service.addContato(c2);
+			service.saveContato(c2);
 			
 			Contato c3 = new Contato();
 			c3.setNome("Tiago de Tal da Silva");
 			c3.setCelular("61900000000");
-			service.addContato(c3);
+			service.saveContato(c3);
 			
 			LOGGER.info("Lista de contatos carregada!");
 		} else {
