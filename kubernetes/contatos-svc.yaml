@@ -3,8 +3,7 @@ kind: Service
 metadata:
   name: contatos-svc
   labels:
-    app: lbl-contatos-pod
-    so: lbl-ubuntu-pod
+    app: lbl-contatos-svc
 spec:
   type: NodePort
   selector:

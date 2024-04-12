@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: contatos-deploy
 spec:
-  replicas: 4
+  replicas: 1
   selector:
     matchLabels:
       app: lbl-contatos-pod
@@ -26,25 +26,5 @@ spec:
           volumeMounts:
             - name: vol-contatos
               mountPath: /tmp
-          
-          livenessProbe:
-            httpGet:
-              scheme: HTTP
-              host: 10.111.191.40
-              path: /contatos
-              port: 8080
-            initialDelaySeconds: 5
-            periodSeconds: 10
-            failureThreshold: 1
-          
-          readinessProbe:
-            httpGet:
-              scheme: HTTP
-              host: 10.111.191.40
-              path: /contatos
-              port: 8080
-            initialDelaySeconds: 10
-            periodSeconds: 5
-            failureThreshold: 3
           ports:
             - containerPort: 8080

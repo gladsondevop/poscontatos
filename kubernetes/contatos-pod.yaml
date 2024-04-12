@@ -11,7 +11,10 @@ spec:
         claimName: vol-host-pvc
   containers:
     - name: contatos
-      image: gladsondevop/contatos:1.0
+      image: gladsondevop/contatos:2.0
+      envFrom:
+        - configMapRef:
+            name: app-configmap
       volumeMounts:
         - name: vol-contatos
           mountPath: /tmp

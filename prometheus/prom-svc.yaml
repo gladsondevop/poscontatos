@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prom-svc
+  labels:
+    prom: lbl-prom-svc
+spec:
+  type: NodePort
+  selector:
+    prom: lbl-prom-pod
+  ports:
+    - port: 9090
+      nodePort: 30090
